@@ -1,3 +1,5 @@
+// Tela: Esqueci a senha
+// Placeholder para funcionalidade de recuperação de senha.
 import { Text, View, StyleSheet } from 'react-native';
 
  function EsqSenha() {

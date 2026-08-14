@@ -1,3 +1,5 @@
+// Estilos: NovoChamado
+// Contém estilos específicos para a tela de novo chamado.
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({

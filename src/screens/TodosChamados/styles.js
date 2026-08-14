@@ -1,0 +1,41 @@
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+	container: { flex: 1, backgroundColor: '#f9fafb' },
+	content: { padding: 16, paddingBottom: 40 },
+	headerRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 },
+	menuButton: { padding: 8 },
+	pageTitle: { fontSize: 22, fontWeight: '700', color: '#1f2937' },
+	avatarPlaceholder: { width: 36, height: 36, borderRadius: 18, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
+	avatarInitial: { color: '#fff', fontWeight: '700' },
+	newButton: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#2563eb', paddingVertical: 10, paddingHorizontal: 16, borderRadius: 10, marginBottom: 12 },
+	newButtonText: { color: '#fff', marginLeft: 8, fontWeight: '700' },
+	filterCard: { backgroundColor: '#fff', borderRadius: 12, padding: 12, marginBottom: 12 },
+	searchInput: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8, marginBottom: 10 },
+	filterRow: { flexDirection: 'row', gap: 8, flexWrap: 'wrap' },
+	filterPill: { flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 999, paddingVertical: 8, paddingHorizontal: 12, marginRight: 8 },
+	filterPillText: { marginLeft: 8, color: '#111827', fontWeight: '600' },
+	card: { backgroundColor: '#fff', borderRadius: 12, padding: 16, marginBottom: 12, borderLeftWidth: 4, borderLeftColor: '#2563eb' },
+	cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
+	cardId: { color: '#2563eb', fontWeight: '700' },
+	statusPill: { paddingVertical: 4, paddingHorizontal: 8, borderRadius: 12 },
+	statusOpen: { backgroundColor: '#fde68a' },
+	statusProgress: { backgroundColor: '#bfdbfe' },
+	statusDone: { backgroundColor: '#d1fae5' },
+	statusText: { fontWeight: '700' },
+	cardTitle: { fontSize: 16, fontWeight: '700', color: '#111827', marginBottom: 6 },
+	cardMeta: { color: '#6b7280', marginBottom: 8 },
+	cardFooterRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+	priorityPill: { paddingVertical: 6, paddingHorizontal: 8, borderRadius: 8 },
+	critica: { backgroundColor: '#fee2e2' },
+	alta: { backgroundColor: '#fee2e2' },
+	baixa: { backgroundColor: '#d1fae5' },
+	media: { backgroundColor: '#fed7aa' },
+	priorityText: { fontWeight: '700' },
+	cardDate: { color: '#9ca3af' },
+	detailsButton: { marginTop: 10, borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, paddingVertical: 8, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 },
+	detailsButtonText: { marginLeft: 6, color: '#111827', fontWeight: '600' },
+});
+
+export default styles;
+

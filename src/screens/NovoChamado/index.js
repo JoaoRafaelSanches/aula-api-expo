@@ -6,10 +6,14 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
-  Picker,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
+
+// Tela: Novo Chamado
+// Responsável por renderizar o formulário que o usuário utiliza
+// para registrar um novo chamado no sistema. Contém validações
+// básicas no front-end e placeholders para integração com a API.
 
 export default function NovoChamadoScreen({ navigation }) {
   const [titulo, setTitulo] = useState('');
@@ -19,16 +23,27 @@ export default function NovoChamadoScreen({ navigation }) {
   const [prioridade, setPrioridade] = useState('Média');
   const [descricao, setDescricao] = useState('');
   const [imagem, setImagem] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [showCategorias, setShowCategorias] = useState(false);
+  const [showPrioridades, setShowPrioridades] = useState(false);
 
   const handleEnviar = () => {
+    if (loading) return;
     if (!titulo || !local || !descricao) {
       Alert.alert('Aviso', 'Por favor, preencha todos os campos obrigatórios');
       return;
     }
 
-    // Aqui você faria a chamada para a API
-    Alert.alert('Sucesso', 'Chamado enviado com sucesso!');
-    navigation.goBack();
+    setLoading(true);
+    try {
+      // Aqui você faria a chamada para a API (use async/await se necessário)
+      Alert.alert('Sucesso', 'Chamado enviado com sucesso!');
+      navigation.goBack();
+    } catch (err) {
+      Alert.alert('Erro', 'Não foi possível enviar o chamado. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -63,16 +78,28 @@ export default function NovoChamadoScreen({ navigation }) {
             <Text style={styles.label}>Categoria</Text>
           </View>
           <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={categoria}
-              onValueChange={setCategoria}
-              style={styles.picker}
+            <TouchableOpacity
+              style={styles.fakePicker}
+              onPress={() => setShowCategorias(!showCategorias)}
             >
-              <Picker.Item label="Hardware" value="Hardware" />
-              <Picker.Item label="Software" value="Software" />
-              <Picker.Item label="Rede e conectividade" value="Rede" />
-              <Picker.Item label="Outro" value="Outro" />
-            </Picker>
+              <Text style={styles.pickerText}>{categoria}</Text>
+            </TouchableOpacity>
+            {showCategorias && (
+              <View style={styles.optionsContainer}>
+                {['Hardware', 'Software', 'Rede', 'Outro'].map((opt) => (
+                  <TouchableOpacity
+                    key={opt}
+                    style={styles.option}
+                    onPress={() => {
+                      setCategoria(opt);
+                      setShowCategorias(false);
+                    }}
+                  >
+                    <Text style={styles.optionText}>{opt}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
           </View>
         </View>
 
@@ -113,16 +140,28 @@ export default function NovoChamadoScreen({ navigation }) {
             <Text style={styles.label}>Prioridade</Text>
           </View>
           <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={prioridade}
-              onValueChange={setPrioridade}
-              style={styles.picker}
+            <TouchableOpacity
+              style={styles.fakePicker}
+              onPress={() => setShowPrioridades(!showPrioridades)}
             >
-              <Picker.Item label="Baixa" value="Baixa" />
-              <Picker.Item label="Média" value="Média" />
-              <Picker.Item label="Alta" value="Alta" />
-              <Picker.Item label="Crítica" value="Crítica" />
-            </Picker>
+              <Text style={styles.pickerText}>{prioridade}</Text>
+            </TouchableOpacity>
+            {showPrioridades && (
+              <View style={styles.optionsContainer}>
+                {['Baixa', 'Média', 'Alta', 'Crítica'].map((opt) => (
+                  <TouchableOpacity
+                    key={opt}
+                    style={styles.option}
+                    onPress={() => {
+                      setPrioridade(opt);
+                      setShowPrioridades(false);
+                    }}
+                  >
+                    <Text style={styles.optionText}>{opt}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            )}
           </View>
         </View>
 
@@ -144,7 +183,12 @@ export default function NovoChamadoScreen({ navigation }) {
         {/* Imagem */}
         <View style={styles.field}>
           <Text style={styles.label}>Imagem do problema (opcional)</Text>
-          <TouchableOpacity style={styles.imageButton}>
+          <TouchableOpacity
+            style={styles.imageButton}
+            onPress={() => {
+              Alert.alert('Atenção', 'Funcionalidade de anexar imagem ainda não implementada');
+            }}
+          >
             <MaterialIcons name="add-a-photo" size={32} color="#2563eb" />
             <Text style={styles.imageButtonText}>Clique para anexar uma imagem do problema</Text>
             <Text style={styles.imageInfo}>PNG ou JPG até 5 MB</Text>

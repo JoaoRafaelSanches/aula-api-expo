@@ -1,3 +1,5 @@
+// Tela: Registro
+// Placeholder para tela de registro/criação de conta.
 import { Text, View, StyleSheet } from 'react-native';
 
  function Registro() {

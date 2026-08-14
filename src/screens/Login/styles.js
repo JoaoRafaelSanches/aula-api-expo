@@ -1,3 +1,5 @@
+// Estilos: Login
+// Estilos para a tela de login e validação de campos.
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -111,6 +113,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2563eb',
     fontWeight: '600',
+  },
+  errorText: {
+    color: '#ef4444',
+    fontSize: 12,
+    marginTop: -8,
+    marginBottom: 8,
+    marginLeft: 4,
   },
 });
 

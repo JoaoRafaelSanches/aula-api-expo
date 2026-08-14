@@ -1,3 +1,5 @@
+// Estilos: Home
+// Estilos para a tela principal (resumo de chamados).
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -211,6 +213,138 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingBottom: 20,
   },
+  headerBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  menuButton: {
+    padding: 8,
+  },
+  headerIcons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  iconButton: {
+    padding: 8,
+    position: 'relative',
+  },
+  badge: {
+    position: 'absolute',
+    top: 2,
+    right: 2,
+    backgroundColor: '#ef4444',
+    minWidth: 18,
+    height: 18,
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  badgeText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  avatarButton: {
+    marginLeft: 8,
+  },
+  avatar: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+  },
+  avatarPlaceholder: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    backgroundColor: '#2563eb',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  avatarInitials: {
+    color: '#fff',
+    fontWeight: '700',
+  },
+  drawerOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  drawerContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    width: 300,
+    backgroundColor: '#0f172a',
+    paddingTop: 40,
+    paddingHorizontal: 16,
+  },
+  drawerHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  drawerTitle: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  drawerItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 12,
+  },
+  drawerItemText: {
+    color: '#fff',
+    marginLeft: 8,
+    fontSize: 16,
+  },
+  // Estilos para o popup de notificações mostrado ao tocar no sino
+  // Contém overlay e caixa com lista de itens
+  notifOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+  },
+  notifBox: {
+    position: 'absolute',
+    top: 68,
+    right: 16,
+    width: 320,
+    maxHeight: 360,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    elevation: 6,
+  },
+  notifTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    marginBottom: 8,
+  },
+  notifItem: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#eef2f7',
+    paddingVertical: 10,
+  },
+  notifItemTitle: { fontWeight: '600', color: '#111827' },
+  notifItemSub: { color: '#6b7280', marginTop: 4 },
+  notifItemTime: { color: '#9ca3af', marginTop: 6, fontSize: 12 },
 });
 
 export default styles;
