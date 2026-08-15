@@ -12,6 +12,7 @@ import RecuperarSenhaScreen from '../screens/RecuperarSenha';
 import ChamadosScreen from '../screens/TodosChamados';
 import ChamadoDetalhes from '../screens/ChamadoDetalhes';
 import { AuthContext } from '../contexts/AuthContext';
+import{tabNavigator} from './tabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +27,7 @@ function RootStack() {
     >
       {isAuthenticated ? (
         <>
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Home" component={TabNavigator} />
           <Stack.Screen name="NovoChamado" component={NovoChamadoScreen} />
           <Stack.Screen name="Chamados" component={ChamadosScreen} />
           <Stack.Screen name="ChamadoDetalhes" component={ChamadoDetalhes} />
