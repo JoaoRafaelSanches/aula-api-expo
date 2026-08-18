@@ -12,7 +12,7 @@ import RecuperarSenhaScreen from '../screens/RecuperarSenha';
 import ChamadosScreen from '../screens/TodosChamados';
 import ChamadoDetalhes from '../screens/ChamadoDetalhes';
 import { AuthContext } from '../contexts/AuthContext';
-import{tabNavigator} from './tabNavigator';
+import TabNavigator from './tabNavigator';
 
 const Stack = createNativeStackNavigator();
 
