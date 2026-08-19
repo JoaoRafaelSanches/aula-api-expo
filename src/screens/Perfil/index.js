@@ -124,59 +124,12 @@ function PerfilScreen({ navigation }) {
         <Text style={styles.inputLabel}>Telefone</Text>
         <TextInput style={styles.input} value={telefone} onChangeText={setTelefone} editable={editMode} />
 
-        <Text style={styles.inputLabel}>Setor</Text>
-        <TextInput style={styles.input} value={setor} onChangeText={setSetor} editable={editMode} />
-
-        <Text style={styles.inputLabel}>Cargo</Text>
-        <TextInput style={styles.input} value={cargo} onChangeText={setCargo} editable={editMode} />
-
         {editMode && (
           <TouchableOpacity style={styles.saveButton} onPress={handleSalvarPerfil}>
             <Text style={styles.saveButtonText}>Salvar alterações</Text>
           </TouchableOpacity>
         )}
       </View>
-
-      {/* Meus dados (estatísticas) */}
-      <View style={styles.sectionCard}>
-        <Text style={styles.sectionTitle}>Meus dados</Text>
-        <View style={styles.statsRow}>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>7</Text>
-            <Text style={styles.statLabel}>Total enviados</Text>
-          </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>3</Text>
-            <Text style={styles.statLabel}>Aberto</Text>
-          </View>
-        </View>
-        <View style={styles.statsRow}>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>2</Text>
-            <Text style={styles.statLabel}>Em andamento</Text>
-          </View>
-          <View style={styles.statBox}>
-            <Text style={styles.statNumber}>2</Text>
-            <Text style={styles.statLabel}>Concluídos</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Segurança */}
-      <View style={styles.sectionCard}>
-        <Text style={styles.sectionTitle}>Segurança</Text>
-        <Text style={styles.inputLabel}>Senha atual</Text>
-        <TextInput style={styles.input} value={senhaAtual} onChangeText={setSenhaAtual} secureTextEntry />
-
-        <Text style={styles.inputLabel}>Nova senha</Text>
-        <TextInput style={styles.input} value={novaSenha} onChangeText={setNovaSenha} secureTextEntry />
-
-        <Text style={styles.inputLabel}>Confirmar nova senha</Text>
-        <TextInput style={styles.input} value={confirmarSenha} onChangeText={setConfirmarSenha} secureTextEntry />
-
-        <TouchableOpacity style={styles.saveButton} onPress={handleAlterarSenha}>
-          <Text style={styles.saveButtonText}>Alterar senha</Text>
-        </TouchableOpacity>
         {/* Botão de logout abaixo da seção de segurança */}
         <TouchableOpacity
           style={styles.logoutButton}
@@ -190,7 +143,6 @@ function PerfilScreen({ navigation }) {
           <MaterialIcons name="logout" size={18} color="#fff" style={styles.buttonIcon} />
           <Text style={styles.logoutButtonText}>Sair</Text>
         </TouchableOpacity>
-      </View>
     </ScrollView>
   );
 }

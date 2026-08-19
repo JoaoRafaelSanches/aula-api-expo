@@ -65,13 +65,14 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.logoText}>N.O.S</Text>
-        <Text style={styles.logoSubtext}>New Occurrence System</Text>
-      </View>
 
       <View style={styles.card}>
-        <Text style={styles.title}>Bem-vindo de volta</Text>
+        <View style={styles.header}>
+          <Text style={styles.logoText}>N.O.S</Text>
+          <Text style={styles.logoSubtext}>New Occurrence System</Text>
+        </View>
+
+        <Text style={styles.title}>Bem vindo de volta</Text>
         <Text style={styles.subtitle}>Entre com suas credenciais para acessar o painel.</Text>
 
         <TextInput
@@ -118,13 +119,7 @@ export default function LoginScreen() {
           <MaterialIcons name="arrow-forward" size={20} color="#fff" style={styles.buttonIcon} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.linkContainer} onPress={() => navigation.navigate('RecuperarSenha')}>
-          <Text style={styles.linkText}>Esqueci minha senha</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.linkContainer}>
-          <Text style={styles.linkText}>Criar conta</Text>
-        </TouchableOpacity>
+      
       </View>
     </View>
   );

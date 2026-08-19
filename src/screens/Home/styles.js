@@ -15,16 +15,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e5e7eb',
   },
-  greeting: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#1f2937',
-    marginBottom: 4,
-  },
-  greetingSubtext: {
-    fontSize: 14,
-    color: '#6b7280',
-  },
+  btnDet: {
+      marginTop: 8,
+      paddingVertical: 6,
+      paddingHorizontal: 12,
+      borderWidth: 1,
+      borderColor: '#d1d5db',
+      borderRadius: 6,
+      alignSelf: 'flex-start',
+    },
+  txtBtnDet: {
+      fontSize: 12,
+      fontWeight: '600',
+      color: '#4b5563',
+    },
   newButtonContainer: {
     paddingHorizontal: 20,
     paddingTop: 20,
@@ -186,20 +190,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#bfdbfe',
     color: '#1e40af',
   },
-  detailsButton: {
-    marginTop: 8,
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderWidth: 1,
-    borderColor: '#d1d5db',
-    borderRadius: 6,
-    alignSelf: 'flex-start',
-  },
-  detailsButtonText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#4b5563',
-  },
+  
   emptyState: {
     alignItems: 'center',
     justifyContent: 'center',

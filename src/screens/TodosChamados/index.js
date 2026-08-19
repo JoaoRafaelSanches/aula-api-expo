@@ -42,23 +42,7 @@ export default function TodosChamados({ navigation }) {
           onChangeText={setQuery}
         />
 
-        <View style={styles.filterRow}>
-          <TouchableOpacity style={styles.filterPill} onPress={() => {}}>
-            <MaterialIcons name="filter-list" size={18} color="#111827" />
-            <Text style={styles.filterPillText}>{statusFilter}</Text>
-            <MaterialIcons name="arrow-drop-down" size={18} color="#111827" />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.filterPill} onPress={() => {}}>
-            <Text style={styles.filterPillText}>Todas as categorias</Text>
-            <MaterialIcons name="arrow-drop-down" size={18} color="#111827" />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.filterPill} onPress={() => {}}>
-            <Text style={styles.filterPillText}>Todas as prioridades</Text>
-            <MaterialIcons name="arrow-drop-down" size={18} color="#111827" />
-          </TouchableOpacity>
-        </View>
+        {/* filtros removidos */}
       </View>
 
       {mock.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
@@ -80,9 +64,9 @@ export default function TodosChamados({ navigation }) {
             <Text style={styles.cardDate}>{item.date}</Text>
           </View>
 
-          <TouchableOpacity style={styles.detailsButton} onPress={() => navigation.navigate('ChamadoDetalhes', { item })}>
+          <TouchableOpacity style={styles.btnDet} onPress={() => navigation.navigate('ChamadoDetalhes', { item })}>
             <MaterialIcons name="remove-red-eye" size={16} color="#111827" />
-            <Text style={styles.detailsButtonText}>Ver detalhes</Text>
+            <Text style={styles.txtBtnDet}>Ver detalhes</Text>
           </TouchableOpacity>
         </View>
       ))}

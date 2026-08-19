@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
 	media: { backgroundColor: '#fed7aa' },
 	priorityText: { fontWeight: '700' },
 	cardDate: { color: '#9ca3af' },
-	detailsButton: { marginTop: 10, borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, paddingVertical: 8, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 },
-	detailsButtonText: { marginLeft: 6, color: '#111827', fontWeight: '600' },
+	btnDet: { marginTop: 10, borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, paddingVertical: 8, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 },
+	txtBtnDet: { marginLeft: 6, color: '#111827', fontWeight: '600' },
 });
 
 export default styles;

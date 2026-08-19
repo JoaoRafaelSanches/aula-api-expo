@@ -15,7 +15,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { AuthContext } from '../../contexts/AuthContext';
 
-const mockChamados = [
+const chamEx = [
   {
     id: '#001',
     titulo: 'Hardw...',
@@ -47,7 +47,7 @@ export default function HomeScreen({ navigation }) {
   const [notifVisible, setNotifVisible] = useState(false);
   // Lista mock de notificações exibidas no popup
   // Lista mock de notificações (cada notificação referencia um chamado)
-  const [notificationsList, setNotificationsList] = useState([
+  const [lstNot, setLstNot] = useState([
     { id: 'n1', chamadoId: '#003', title: 'Seu chamado está em atendimento', subtitle: '#003 — Sem acesso à rede no setor', time: 'há 12 min' },
     { id: 'n2', chamadoId: '#002', title: 'Comentário do técnico', subtitle: '#002 — Substituição do mouse prevista para hoje', time: 'há 1 h' },
     { id: 'n3', chamadoId: '#004', title: 'Chamado concluído', subtitle: '#004 — Projetor do Laboratório 03', time: 'há 9 dias' },
@@ -67,7 +67,7 @@ export default function HomeScreen({ navigation }) {
 
   // Ao tocar numa notificação: fecha o popup, decrementa o contador
   // e navega para a tela de detalhes passando um objeto mínimo do chamado.
-  const handleNotifPress = (n) => {
+  const onNotifPress = (n) => {
     setNotifVisible(false);
     setNotifications((prev) => Math.max(0, prev - 1));
     const item = {
@@ -138,49 +138,6 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        {/* Stats */}
-        <View style={styles.statsContainer}>
-          <View style={styles.statCard}>
-            <View style={[styles.statIconContainer, styles.statIconTodos]}>
-              <MaterialIcons name="description" size={32} color="#0284c7" />
-            </View>
-            <View style={styles.statContent}>
-              <Text style={styles.statNumber}>7</Text>
-              <Text style={styles.statLabel}>Total enviados</Text>
-            </View>
-          </View>
-
-          <View style={styles.statCard}>
-            <View style={[styles.statIconContainer, styles.statIconAberto]}>
-              <MaterialIcons name="mail-outline" size={32} color="#d97706" />
-            </View>
-            <View style={styles.statContent}>
-              <Text style={styles.statNumber}>3</Text>
-              <Text style={styles.statLabel}>Aberto</Text>
-            </View>
-          </View>
-
-          <View style={styles.statCard}>
-            <View style={[styles.statIconContainer, styles.statIconAndamento]}>
-              <MaterialIcons name="schedule" size={32} color="#d97706" />
-            </View>
-            <View style={styles.statContent}>
-              <Text style={styles.statNumber}>2</Text>
-              <Text style={styles.statLabel}>Em andamento</Text>
-            </View>
-          </View>
-
-          <View style={styles.statCard}>
-            <View style={[styles.statIconContainer, styles.statIconConcluido]}>
-              <MaterialIcons name="check-circle" size={32} color="#059669" />
-            </View>
-            <View style={styles.statContent}>
-              <Text style={styles.statNumber}>2</Text>
-              <Text style={styles.statLabel}>Concluídos</Text>
-            </View>
-          </View>
-        </View>
-
         {/* Meus Chamados Recentes */}
         <View style={styles.recentSection}>
           <View style={styles.recentHeader}>
@@ -191,7 +148,7 @@ export default function HomeScreen({ navigation }) {
             </TouchableOpacity>
           </View>
 
-          {mockChamados.map((chamado) => (
+          {chamEx.map((chamado) => (
             <View key={chamado.id} style={styles.chamadoCard}>
               <Text style={styles.chamadoId}>{chamado.id}</Text>
               <Text style={styles.chamadoTitle}>{chamado.titulo}</Text>
@@ -222,15 +179,15 @@ export default function HomeScreen({ navigation }) {
               </View>
 
               <TouchableOpacity
-                style={styles.detailsButton}
+                style={styles.btnDet}
                 onPress={() => navigation.navigate('ChamadoDetalhes', { item: chamado })}
               >
-                <Text style={styles.detailsButtonText}>Ver detalhes</Text>
+                <Text style={styles.txtBtnDet}>Ver detalhes</Text>
               </TouchableOpacity>
             </View>
           ))}
         </View>
-      </ScrollView>
+        </ScrollView>
 
       {/* Drawer lateral simples (não depende de @react-navigation/drawer) */}
       {drawerVisible && (
@@ -284,8 +241,8 @@ export default function HomeScreen({ navigation }) {
           {/* Caixa de notificações alinhada ao topo-direita */}
           <View style={styles.notifBox}>
             <Text style={styles.notifTitle}>Notificações</Text>
-            {notificationsList.map((n) => (
-              <TouchableOpacity key={n.id} style={styles.notifItem} onPress={() => handleNotifPress(n)}>
+            {lstNot.map((n) => (
+              <TouchableOpacity key={n.id} style={styles.notifItem} onPress={() => onNotifPress(n)}>
                 <Text style={styles.notifItemTitle}>{n.title}</Text>
                 <Text style={styles.notifItemSub}>{n.subtitle}</Text>
                 <Text style={styles.notifItemTime}>{n.time}</Text>
