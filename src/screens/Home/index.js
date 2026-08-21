@@ -10,6 +10,7 @@ import {
   Animated,
   Dimensions,
   Image,
+  PanResponder,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
@@ -37,6 +38,13 @@ const chamEx = [
     prioridade: 'Crítica',
     status: 'Em andamento',
   },
+  {
+    id: '#004',
+    titulo: 'Projet...',
+    descricao: 'Projetor do Labor...',
+    prioridade: 'Baixa',
+    status: 'Concluído',
+  },
 ];
 
 export default function HomeScreen({ navigation }) {
@@ -56,14 +64,40 @@ export default function HomeScreen({ navigation }) {
 
   const toggleDrawer = (show) => {
     if (show) setDrawerVisible(true);
+    const parentNav = navigation.getParent && navigation.getParent();
+    try {
+      if (parentNav && parentNav.setOptions) parentNav.setOptions({ tabBarStyle: show ? { display: 'none' } : undefined });
+    } catch (e) {
+      // ignore if parent doesn't support setOptions
+    }
+
     Animated.timing(drawerAnim, {
       toValue: show ? 0 : -Dimensions.get('window').width,
       duration: 250,
       useNativeDriver: true,
     }).start(() => {
       if (!show) setDrawerVisible(false);
+      try {
+        if (parentNav && parentNav.setOptions) parentNav.setOptions({ tabBarStyle: undefined });
+      } catch (e) {}
     });
   };
+
+  // PanResponder para detectar arrastar a partir da borda esquerda e abrir o drawer
+  const ArrastarMenu = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: (evt, gestureState) => evt.nativeEvent.pageX <= 20,
+      onMoveShouldSetPanResponder: (evt, gestureState) => evt.nativeEvent.pageX <= 20 && Math.abs(gestureState.dx) > 5,
+      onPanResponderMove: (evt, gs) => {
+        if (gs.dx > 30) {
+          toggleDrawer(true);
+        }
+      },
+      onPanResponderRelease: (evt, gs) => {
+        if (gs.dx > 50) toggleDrawer(true);
+      },
+    })
+  ).current;
 
   // Ao tocar numa notificação: fecha o popup, decrementa o contador
   // e navega para a tela de detalhes passando um objeto mínimo do chamado.
@@ -80,7 +114,7 @@ export default function HomeScreen({ navigation }) {
     navigation.navigate('ChamadoDetalhes', { item });
   };
   return (
-    <View style={styles.container}>
+    <View style={styles.container} {...ArrastarMenu.panHandlers}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerBar}>
@@ -115,12 +149,7 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
 
-        <View>
-          <Text style={styles.greeting}>Olá, Ana 👋</Text>
-          <Text style={styles.greetingSubtext}>
-            Este é o resumo dos chamados que você registrou no N.O.S.
-          </Text>
-        </View>
+     
       </View>
 
       <ScrollView

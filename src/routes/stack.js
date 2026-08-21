@@ -8,7 +8,6 @@ import HomeScreen from '../screens/Home';
 import NovoChamadoScreen from '../screens/NovoChamado';
 import PerfilScreen from '../screens/Perfil';
 import LoginScreen from '../screens/Login';
-import RecuperarSenhaScreen from '../screens/RecuperarSenha';
 import ChamadosScreen from '../screens/TodosChamados';
 import ChamadoDetalhes from '../screens/ChamadoDetalhes';
 import { AuthContext } from '../contexts/AuthContext';
@@ -36,7 +35,6 @@ function RootStack() {
       ) : (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="RecuperarSenha" component={RecuperarSenhaScreen} />
         </>
       )}
     </Stack.Navigator>

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f9fafb',
-    paddingHorizontal: 20,
+    paddingHorizontal: 12,
   },
   title: {
     fontSize: 24,
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     marginTop: 30,
+    width: '100%',
     shadowColor: '#ef4444',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
@@ -44,9 +45,12 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   scrollContent: {
+    flexGrow: 1,
+    paddingTop: 80,
     paddingBottom: 30,
     paddingHorizontal: 16,
     alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   topRow: {
     width: '100%',
@@ -74,6 +78,19 @@ const styles = StyleSheet.create({
   topLogoutButton: {
     padding: 6,
   },
+  bottomBackButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+    marginTop: 18,
+    width: '100%',
+    justifyContent: 'center',
+  },
   profileCard: {
     backgroundColor: '#fff',
     borderRadius: 12,
@@ -81,13 +98,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 12,
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 8,
+    marginTop: 48,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.08,
     shadowRadius: 6,
     elevation: 2,
-    width: '100%'
+    width: '94%',
+    alignSelf: 'center',
+    maxWidth: 760,
   },
   profileAvatar: {
     width: 72,
@@ -144,8 +164,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 12,
     padding: 16,
-    marginBottom: 16,
+    marginBottom: 12,
     width: '100%'
+  },
+
+  avatarContainer: {
+    position: 'relative',
+    width: 72,
+    height: 72,
+  },
+  changePhotoButton: {
+    position: 'absolute',
+    right: -6,
+    bottom: -6,
+    backgroundColor: '#2563eb',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: '#fff',
+    elevation: 3,
   },
   sectionHeader: {
     flexDirection: 'row',

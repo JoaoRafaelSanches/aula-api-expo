@@ -10,6 +10,7 @@ import styles from './styles';
 // - Seção 'Dados pessoais' com campos editáveis
 // - Seção 'Meus dados' com estatísticas
 // - Seção 'Segurança' para alterar a senha
+
 function PerfilScreen({ navigation }) {
   const { logout, user, updateProfile, changePassword } = useContext(AuthContext) || {};
 
@@ -19,6 +20,7 @@ function PerfilScreen({ navigation }) {
   const [telefone, setTelefone] = useState(user?.phone || '(11) 98876-4410');
   const [setor, setSetor] = useState(user?.sector || 'Secretaria Acadêmica');
   const [cargo, setCargo] = useState(user?.role || 'Assistente Administrativa');
+  const [avatar, setAvatar] = useState(user?.avatar || null);
 
   const [senhaAtual, setSenhaAtual] = useState('');
   const [novaSenha, setNovaSenha] = useState('');
@@ -64,27 +66,12 @@ function PerfilScreen({ navigation }) {
     }
   };
 
+  // Image picker removed to avoid runtime errors until package is installed
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       {/* Header com botão voltar e logout */}
-      <View style={styles.topRow}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <MaterialIcons name="arrow-back" size={20} color="#111827" />
-          <Text style={styles.backText}>Voltar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.topLogoutButton}
-          onPress={() => {
-            Alert.alert('Sair', 'Deseja sair da sua conta?', [
-              { text: 'Cancelar', style: 'cancel' },
-              { text: 'Sair', style: 'destructive', onPress: () => { if (typeof logout === 'function') logout(); } },
-            ]);
-          }}
-        >
-          <MaterialIcons name="logout" size={20} color="#ef4444" />
-        </TouchableOpacity>
-      </View>
+      {/* Top header removed per user request */}
       {/* Card do usuário */}
       <View style={styles.profileCard}>
         {user?.avatar ? (
@@ -98,7 +85,7 @@ function PerfilScreen({ navigation }) {
         )}
 
         <View style={styles.profileInfo}>
-          <Text style={styles.profileName}>{nomeCompleto[0] || 'A...'}</Text>
+          <Text style={styles.profileName}>{nomeCompleto || 'A...'}</Text>
           <Text style={styles.profileEmail}>{email}</Text>
           <Text style={styles.profilePhone}>{telefone}</Text>
           <TouchableOpacity style={styles.editProfileButton} onPress={() => setEditMode(!editMode)}>
@@ -131,6 +118,11 @@ function PerfilScreen({ navigation }) {
         )}
       </View>
         {/* Botão de logout abaixo da seção de segurança */}
+        {/* Botão Voltar posicionado acima do logout (mais próximo ao botão Sair) */}
+        <TouchableOpacity style={styles.bottomBackButton} onPress={() => navigation.goBack()}>
+          <MaterialIcons name="arrow-back" size={18} color="#111827" />
+          <Text style={styles.backText}>Voltar</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.logoutButton}
           onPress={() => {

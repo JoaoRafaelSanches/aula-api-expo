@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     },
   newButtonContainer: {
     paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 16,
+    paddingTop: 6,
+    paddingBottom: 12,
   },
   newButton: {
     backgroundColor: '#2563eb',
@@ -210,7 +210,11 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   menuButton: {
-    padding: 8,
+    padding: 12,
+    width: 44,
+    height: 44,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   headerIcons: {
     flexDirection: 'row',
